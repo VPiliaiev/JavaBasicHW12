@@ -111,10 +111,10 @@ public class StaggeredArrays {
 
     public static int findAbsoluteMin(int[][] array) {
         int absoluteMin = array[0][0];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i][j] < absoluteMin) {
-                    absoluteMin = array[i][j];
+        for (int[] ints : array) {
+            for (int anInt : ints) {
+                if (anInt < absoluteMin) {
+                    absoluteMin = anInt;
                 }
             }
         }
