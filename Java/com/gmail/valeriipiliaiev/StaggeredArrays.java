@@ -43,8 +43,7 @@ public class StaggeredArrays {
             int rowLength = random.nextInt(maxElements);
             array[i] = new int[rowLength];
             for (int j = 0; j < rowLength; j++) {
-                System.out.print("Введіть значення елементу [" + i + "][" + j + "]: ");
-                array[i][j] = scanner.nextInt();
+                array[i][j] = random.nextInt(maxElements);
             }
         }
 
