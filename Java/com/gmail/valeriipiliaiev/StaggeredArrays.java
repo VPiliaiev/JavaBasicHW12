@@ -21,12 +21,16 @@ public class StaggeredArrays {
         System.out.println("Мінімальні елементи для кожного рядка:");
         printRow(minElements);
 
-        int absoluteMin = findAbsoluteMin(array);
+        int absoluteMin = findAbsoluteMin(minElements);
         System.out.println("Мінімальний елемент серед усіх елементів: " + absoluteMin);
 
-        divideByAbsoluteMin(array, absoluteMin);
-        System.out.println("Масив після поділу націло на абсолютний мінімум:");
-        printArray(array);
+        if (absoluteMin != 0) {
+            divideByAbsoluteMin(array, absoluteMin);
+            System.out.println("Масив після поділу націло на абсолютний мінімум:");
+            printArray(array);
+        } else {
+            System.out.println("Ділення на нуль неможливе.");
+        }
     }
 
     public static int[][] createStaggeredArray() {
@@ -35,7 +39,6 @@ public class StaggeredArrays {
         int rowCount = scanner.nextInt();
         System.out.print("Введіть максимальну кількість елементів в рядку: ");
         int maxElements = scanner.nextInt();
-
         Random random = new Random();
         int[][] array = new int[rowCount][];
 
@@ -109,13 +112,11 @@ public class StaggeredArrays {
         return minElements;
     }
 
-    public static int findAbsoluteMin(int[][] array) {
-        int absoluteMin = array[0][0];
-        for (int[] ints : array) {
-            for (int anInt : ints) {
-                if (anInt < absoluteMin) {
-                    absoluteMin = anInt;
-                }
+    public static int findAbsoluteMin(int[] array) {
+        int absoluteMin = array[0];
+        for (int element : array) {
+            if (element < absoluteMin) {
+                absoluteMin = element;
             }
         }
         return absoluteMin;
